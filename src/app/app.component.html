@@ -1,0 +1,55 @@
+<h1 style="text-align: center">The Sample application for Angular</h1>
+
+<!--  Interpolation Bindg the variable with in curely brackets   -->
+<h1 style="text-align: center">Welcome to {{ name }}</h1>
+
+<!--  Property Binding For Using strg & bollean Value -->
+<img [src]="image" alt="" class="center" style="height: 100px; width: 250px" />
+
+<br />
+<div style="text-align: center">
+  <button (click)="onClick()">Submit</button><br /><br />
+
+  <!-- to view and the Model is sync so used the ngModel Directories part of formsModule so use need to import in your ts File  -->
+  <input [(ngModel)]="value" type="text" />
+
+  <!-- every time user insert data in the input box is reflected in the module as well -->
+  {{ value }}
+</div>
+
+<h1 style="text-align: center">File Upload</h1>
+
+<!--  -->
+<!-- <div class="container">
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Upload file example</label>
+        <input (change)="this.onFilechange($event)" type="file">
+        <button (click)="this.upload()" type="button" class="btn btn-primary mt-3">Upload</button>
+      </div>
+    </div>
+  </div>  
+ </div> -->
+
+<app-get-user></app-get-user>
+
+<app-file-upload></app-file-upload>
+
+<div class="parent">
+  <h1 style="text-align: center">Parent Component</h1>
+  <p style="text-align: center">{{ message }}</p>
+  <ul>
+      <li *ngFor="let Command of messages">{{ messages }}</li>
+  </ul>
+  <!-- [message] is a property on the child component and currentMessage parent property -->
+  <!-- <app-child [message]="currentMessage"></app-child> -->
+  <!-- Use property Binding for data sharing parent to child -->
+  <app-child
+    [message]="currentMessage"
+    (messageEvent)="addMessage($event)"
+  ></app-child>
+</div>
+
+<!-- <app-child [message] = "message" style="text-align: center"></app-child> 
+ <app-child [messageEvent] = "receivedMessage($event)" style="text-align: center"></app-child>  -->
